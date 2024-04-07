@@ -1,4 +1,4 @@
-package org.example.launcher;
+package org.example;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClient;
@@ -6,14 +6,14 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
-import org.example.topology.GreetingsTopology;
+import org.example.topology.Ex01GreetingsTopology;
 
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class GreetingsStreamApp {
+public class Ex01GreetingsStreamApp {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
@@ -23,10 +23,10 @@ public class GreetingsStreamApp {
 
 
         //calling create topics to get the topics created
-        createTopics(properties, List.of(GreetingsTopology.GREETINGS, GreetingsTopology.GREETINGS_UPPERCASE));
+        createTopics(properties, List.of(Ex01GreetingsTopology.GREETINGS, Ex01GreetingsTopology.GREETINGS_UPPERCASE));
 
         // here are actaully initiating our topology
-        var greetingTopology = GreetingsTopology.buildTopoloogy();
+        var greetingTopology = Ex01GreetingsTopology.buildTopoloogy();
         var kafkaStreams = new KafkaStreams(greetingTopology, properties);
 
 

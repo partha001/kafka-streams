@@ -7,7 +7,7 @@ import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.Printed;
 import org.apache.kafka.streams.kstream.Produced;
 
-public class GreetingsTopology {
+public class Ex01GreetingsTopology {
 
     public static String GREETINGS = "greetings";
 
