@@ -19,6 +19,7 @@ This command should take care of logging in to the Kafka container.
 
 Command to produce messages in to the Kafka topic.
     kafka-console-producer --broker-list localhost:9092 --topic greetings
+
 Publish to greetings topic with key and value
     kafka-console-producer --broker-list localhost:9092 --topic greetings --property "key.separator=-" --property "parse.key=true"
 
