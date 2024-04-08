@@ -30,14 +30,18 @@ Publish to greetings-spanish topic with key and value
 Consume Messages
 This command should take care of logging in to the Kafka container.
     docker exec -it broker bash
+
 Command to consume messages from the Kafka topic.
     kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings_uppercase
+
 Command to consume with Key
     kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings_uppercase --from-beginning -property "key.separator= - " --property "print.key=true"
+
 Other Helpful Kafka Consumer commands
     kafka-console-consumer --bootstrap-server localhost:9092 --topic general_orders
     kafka-console-consumer --bootstrap-server localhost:9092 --topic restaurant_orders
     kafka-console-consumer --bootstrap-server localhost:9092 --topic ktable-words-store-changelog --from-beginning
+
 Command to read from the Internal Aggregate topic
     kafka-console-consumer --bootstrap-server localhost:9092 --topic aggregate-KSTREAM-AGGREGATE-STATE-STORE-0000000003-changelog --from-beginning -property "key.separator= - " --property "print.key=true"
 
