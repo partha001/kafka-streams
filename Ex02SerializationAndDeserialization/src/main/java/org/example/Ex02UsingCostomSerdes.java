@@ -1,3 +1,5 @@
+package org.example;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -5,17 +7,17 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
-import org.example.topology.Ex01AlternateStyleToSpecifySerdesTopology;
+import org.example.topology.Ex02CustomSerdeTopology;
+
 
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-import static org.example.topology.Ex01AlternateStyleToSpecifySerdesTopology.GREETINGS;
-import static org.example.topology.Ex01AlternateStyleToSpecifySerdesTopology.GREETINGS_UPPERCASE;
+import static org.example.topology.Ex02CustomSerdeTopology.*;
 
 @Slf4j
-public class Ex01AnotherWayOfSpecifyingSerdes {
+public class Ex02UsingCostomSerdes {
 
 
     public static void main(String[] args) {
@@ -30,10 +32,10 @@ public class Ex01AnotherWayOfSpecifyingSerdes {
 
 
         //calling create topics to get the topics created
-        createTopics(properties, List.of( GREETINGS, GREETINGS_UPPERCASE));
+        createTopics(properties, List.of( GREETINGS, GREETINGS_SPANISH, GREETINGS_UPPERCASE));
 
         // here are actaully initiating our topology
-        var greetingTopology = Ex01AlternateStyleToSpecifySerdesTopology.buildTopoloogy();
+        var greetingTopology = Ex02CustomSerdeTopology.buildTopoloogy();
         var kafkaStreams = new KafkaStreams(greetingTopology, properties);
 
 
