@@ -7,8 +7,8 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
-import org.example.exceptionHandler.StreamsDeserializationExcetionHandler;
-import org.example.topology.Ex01DefaultExceptionHandlingTopology;
+import org.example.topology.Ex05DefaultProcessorErrorHandlerToplogy;
+
 
 import java.util.List;
 import java.util.Properties;
@@ -39,7 +39,7 @@ public class Ex05DefaultProcessorErrorHandlerApp {
         createTopics(properties, List.of( GREETINGS, GREETINGS_SPANISH, GREETINGS_UPPERCASE));
 
         // here are actaully initiating our topology
-        var greetingTopology = Ex01DefaultExceptionHandlingTopology.buildTopoloogy();
+        var greetingTopology = Ex05DefaultProcessorErrorHandlerToplogy.buildTopoloogy();
         var kafkaStreams = new KafkaStreams(greetingTopology, properties);
 
         //here we are registering a graceful shutdown hook. this will also take care of clearing out the resources created by the application
