@@ -4,6 +4,7 @@ import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.example.domain.Order;
 import org.example.domain.Revenue;
+import org.example.domain.TotalRevenue;
 
 public class SerdesFactory {
 
@@ -25,5 +26,12 @@ public class SerdesFactory {
         JsonSerializer<Revenue> jsonSerializer = new JsonSerializer<>();
         JsonDeserializer<Revenue> jsonDeserializer = new JsonDeserializer<>(Revenue.class);
         return Serdes.serdeFrom(jsonSerializer,jsonDeserializer);
+    }
+
+    public static Serde<TotalRevenue> totalRevenueSerde() {
+        JsonSerializer<TotalRevenue> jsonSerializer = new JsonSerializer<>();
+        JsonDeserializer<TotalRevenue> jsonDeserializer = new JsonDeserializer<>(TotalRevenue.class);
+        return Serdes.serdeFrom(jsonSerializer,jsonDeserializer);
+
     }
 }
